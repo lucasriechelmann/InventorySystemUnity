@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-
 public class ActionManagerEvent
 {
     public delegate void SendActionList(List<GenericActionScriptable> actionList);

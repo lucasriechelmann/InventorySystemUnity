@@ -31,9 +31,9 @@ public abstract class GenericItemScriptable : ScriptableObject
     [SerializeField]
     float _totalWeightPerItem;
     [SerializeField]
-    ActionManagerEvent _actionManagerEvent;
+    protected ActionManagerEvent _actionManagerEvent;
     [SerializeField]
-    List<GenericActionScriptable> _actionUserList;
+    List<GenericActionScriptable> _actionUseList;
 
     #endregion
     #region Getter and Setters
@@ -111,7 +111,7 @@ public abstract class GenericItemScriptable : ScriptableObject
     public virtual void ActionUseListDispatch()
     {
         _actionManagerEvent = new();
-        _actionManagerEvent.DispatchAllGenericActionListEvent(_actionUserList);
+        _actionManagerEvent.DispatchAllGenericActionListEvent(_actionUseList);
     }
     public virtual void ActionEquipAndUnequipListDispatch()
     {
