@@ -13,7 +13,11 @@ public class ItemView : MonoBehaviour
     ActionManagerEvent _actionManagerEvent;
     #endregion
     #region Getter and Setters
-    public int Number => _number;
+    public int Number 
+    {
+        get => _number;
+        set => _number = value;
+    }
     public GenericItemScriptable Item => _item;
     #endregion
     #region Methods
@@ -21,15 +25,13 @@ public class ItemView : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
-            Collect();
+            Collect();         
     }
     void Collect()
     {
-        //bool result = InventoryManagerController
+        bool result = InventoryManagerController.Instance.AddItemToCurrentBag(_item, _number, false);
 
-        bool result = true;
-
-        if(result)
+        if (result)
         {
             _actionManagerEvent = new();
             _actionManagerEvent.DispatchAllGenericActionListEvent(_actionList);

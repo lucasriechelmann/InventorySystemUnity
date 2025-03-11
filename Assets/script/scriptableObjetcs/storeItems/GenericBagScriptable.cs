@@ -26,7 +26,7 @@ public abstract class GenericBagScriptable : ScriptableObject
     [SerializeField]
     protected bool _autoOrganize;
     protected MatrixUtility _matrix;
-    bool _usedOrganizeBtSizePriority = false;
+    bool _usedOrganizeBySizePriority = false;
     #endregion
     #region Getter and Setters
     public Sprite Icon => _icon;
@@ -37,10 +37,10 @@ public abstract class GenericBagScriptable : ScriptableObject
     public float WeightLimit => _weightLimit;
     public float CurrentWeight => _currentWeight;
     public bool AutoOrganize => _autoOrganize;
-    public bool UsedOrganizeBtSizePriority
+    public bool UsedOrganizeBySizePriority
     {
-        get => _usedOrganizeBtSizePriority;
-        set => _usedOrganizeBtSizePriority = value;
+        get => _usedOrganizeBySizePriority;
+        set => _usedOrganizeBySizePriority = value;
     }
     public int SlotLimited => maxColumns * maxRows;
 
@@ -133,5 +133,6 @@ public abstract class GenericBagScriptable : ScriptableObject
         return false;
     }
     public GenericItemScriptable FindItemById(int id) => _itemList.Find(x => x.Id == id);
+    public List<GenericItemScriptable> ReturnFullList() => _itemList;
     #endregion
 }

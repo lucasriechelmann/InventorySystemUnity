@@ -3053,6 +3053,7 @@ GameObject:
   m_Component:
   - component: {fileID: 876147535}
   - component: {fileID: 876147536}
+  - component: {fileID: 876147537}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -3088,6 +3089,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentActionList: []
+--- !u!114 &876147537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876147534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83575fc5016acbb4384a974477b57d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerGo: {fileID: 2033552549}
+  _directionLaunchGo: {fileID: 1557024393}
+  _placeToDrop: {fileID: 1020811485}
+  _itemListGo:
+  - {fileID: 5470479699963931563, guid: aaa1f6663dcdce74a83bcdc906f3553e, type: 3}
+  - {fileID: 5470479699963931563, guid: 22f1209d4238d584f9d0402d16219969, type: 3}
+  - {fileID: 5470479699963931563, guid: 95c37e88e28092b4689ad00d99c39ef2, type: 3}
+  - {fileID: 5470479699963931563, guid: 1a4ba9877ff1eaf429ba70b7d529acc9, type: 3}
+  - {fileID: 5470479699963931563, guid: f30e76334b0445e4082256f84cc06704, type: 3}
+  - {fileID: 5470479699963931563, guid: 6cfad7e8874b8824bad9b1c4186a637a, type: 3}
+  - {fileID: 5470479699963931563, guid: 056fd0ae3c3376f409d68e34cfc3a56a, type: 3}
+  - {fileID: 5470479699963931563, guid: 24264761db28cfe43b5e3983d43841fc, type: 3}
+  - {fileID: 5470479699963931563, guid: ad0d1acca1dda2f4594a4bd1bbeb8e56, type: 3}
+  - {fileID: 5470479699963931563, guid: cb3326aa970daf14bb47f6bd6204bb3e, type: 3}
+  - {fileID: 5470479699963931563, guid: ceb02d8da1114344481f95324f8aa1aa, type: 3}
+  - {fileID: 5470479699963931563, guid: 49b36e70319a5e740b8868c6871cc939, type: 3}
+  - {fileID: 5470479699963931563, guid: b4610360bcd0eac49a23173a62cabdaa, type: 3}
+  - {fileID: 5470479699963931563, guid: de7f00caaf5ebd54eb97e8dcc49ce0d7, type: 3}
+  - {fileID: 5470479699963931563, guid: 978383997b54b934d97366cab137f4ec, type: 3}
+  - {fileID: 5470479699963931563, guid: adf92cdc823e84d4a99e025aac255570, type: 3}
+  - {fileID: 5470479699963931563, guid: 632e1100a4d5b964591a79bab4f139b2, type: 3}
+  - {fileID: 5470479699963931563, guid: 379c7b8bd8d796e4a95d933dd045d09a, type: 3}
+  - {fileID: 5470479699963931563, guid: a76d6910943c24644a799e94f5b65161, type: 3}
+  - {fileID: 5470479699963931563, guid: 52de52d892f9ae542b62f426850e958b, type: 3}
+  - {fileID: 5470479699963931563, guid: 912dfee3c2361154a9a96a3fb19351b5, type: 3}
+  _currentBag: {fileID: 11400000, guid: de04e4130b724dc4483f078100da29ad, type: 2}
 --- !u!1 &921571133
 GameObject:
   m_ObjectHideFlags: 0
