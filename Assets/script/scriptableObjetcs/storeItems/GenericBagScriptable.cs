@@ -50,6 +50,15 @@ public abstract class GenericBagScriptable : ScriptableObject
     {
         ResetBag();
     }
+    protected virtual bool SlotCapacityValidation(GenericItemScriptable item)
+    {
+        if(item.SlotSize == 2 || item.SlotSize == 3 || item.SlotSize == 5)
+        {
+            return !(item.SlotSize > MaxColumns && item.SlotSize > MaxRows);
+        }
+
+        return true;
+    }
     protected virtual void OnDisable()
     {
     }
@@ -115,11 +124,29 @@ public abstract class GenericBagScriptable : ScriptableObject
             return false;
         }
 
-        if (SizeWeightNumberValidation(item, number, true))
+        if(!SlotCapacityValidation(item))
+            return false;
+
+        List<Vector2> listResult = _matrix.LookForFreeArea(item.SlotSize);
+
+        if(listResult.Count > 0)
+        {
+            if (SizeWeightNumberValidation(item, number, true))
+            {
+                _matrix.SetItem(listResult, item.Id);
+                _itemList.Add(item);
+                UpdateSizeAndWeight();
+                return true;
+            }
+        }      
+        
+        if(_autoOrganize && SizeWeightNumberValidation(item, number, true))
         {
             _itemList.Add(item);
+            UpdateSizeAndWeight();
+            OrganizeBySizePriority();
             return true;
-        }        
+        }
 
         return false;
     }
@@ -132,7 +159,49 @@ public abstract class GenericBagScriptable : ScriptableObject
 
         return false;
     }
+    public bool RemoveItem(int id)
+    {
+        GenericItemScriptable item = FindItemById(id);
+
+        return RemoveItem(item);
+    }
+    public bool DropItem(int id)
+    {
+        GenericItemScriptable item = FindItemById(id);
+
+        if (item != null && item.IsDroppable)
+        {
+            item.Reset();
+            RemoveItem(item);
+            return true;
+        }
+
+        return false;
+    }
+    public bool RemoveItem(GenericItemScriptable item)
+    {
+        if (item == null)
+            return false;
+
+        _matrix.ClearItemOnMatrix(item.Id);
+        _itemList.Remove(item);
+        UpdateSizeAndWeight();
+
+        return true;
+    }
     public GenericItemScriptable FindItemById(int id) => _itemList.Find(x => x.Id == id);
+    public virtual void OrganizeBySizePriority()
+    {
+        _usedOrganizeBySizePriority = true;
+        List<GenericItemScriptable> tempList = _itemList.OrderByDescending(x => x.SlotSize).ToList();
+        ResetBag();
+        _matrix.PopulateMatrix();
+        foreach(GenericItemScriptable item in tempList)
+        {
+            AddItem(item, 0);
+        }
+    }
+    public List<Vector2> FindCellById(int id) => _matrix.FindLocationById(id);
     public List<GenericItemScriptable> ReturnFullList() => _itemList;
     #endregion
 }

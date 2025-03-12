@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 3
   _icon: {fileID: 21300000, guid: df20f3d05406e584cb0833ee51d65127, type: 3}
-  _isDroppable: 0
+  _isDroppable: 1
   _removeWhenNumberIsZero: 0
   _isOnlyItem: 0
   _label: Canteen

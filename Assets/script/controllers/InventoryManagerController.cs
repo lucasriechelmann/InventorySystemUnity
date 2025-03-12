@@ -14,7 +14,9 @@ public class InventoryManagerController : MonoBehaviour
     List<GameObject> _itemListGo;
     [SerializeField]
     GenericBagScriptable _currentBag;
-    public static InventoryManagerController Instance;
+    [SerializeField]
+    protected List<KeyCode> _keyCodesShortCutList;
+    public static InventoryManagerController Instance; 
     #endregion
     #region Methods
     void Awake()
@@ -23,9 +25,21 @@ public class InventoryManagerController : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        UseShortCut();
+
+        if (Input.GetKeyDown(KeyCode.R))
         {
             BuildMeshModel(Random.Range(1, 21), 1);
+        }
+    }
+    void UseShortCut()
+    {
+        for(int i = 0; i < _keyCodesShortCutList.Count; i++)
+        {
+            if (Input.GetKeyDown(_keyCodesShortCutList[i]))
+            {
+                
+            }
         }
     }
     void UseItem(int id, int number)
@@ -70,9 +84,24 @@ public class InventoryManagerController : MonoBehaviour
     {
         return true;
     }
-    public bool DropItem()
+    public bool DropItem(GenericItemScriptable item)
     {
-        return true;
+        bool result = false;
+        int currentNumber;
+
+        if(item.Id >= 0)
+        {
+            currentNumber = item.CurrentNumber;
+            result = _currentBag.DropItem(item.Id);
+
+            if (result)
+            {
+                //Update View
+                BuildMeshModel(item.Id, currentNumber);
+            }
+        }
+        
+        return result;
     }
     void BuildMeshModel(int id, int currentNumber)
     {

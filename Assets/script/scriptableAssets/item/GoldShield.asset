@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 6
   _icon: {fileID: 21300000, guid: f364dfbf9e51eff408e7c135ff93e497, type: 3}
-  _isDroppable: 0
+  _isDroppable: 1
   _removeWhenNumberIsZero: 0
   _isOnlyItem: 0
   _label: Golden Shield

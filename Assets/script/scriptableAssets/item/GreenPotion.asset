@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 11
   _icon: {fileID: 21300000, guid: 0168c4521977f974bbdb03d57c97e0a9, type: 3}
-  _isDroppable: 0
+  _isDroppable: 1
   _removeWhenNumberIsZero: 0
   _isOnlyItem: 0
   _label: Green Potion

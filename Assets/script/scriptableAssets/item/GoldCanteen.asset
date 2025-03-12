@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 19
   _icon: {fileID: 21300000, guid: d2a993e20caa97445a36252343413bc5, type: 3}
-  _isDroppable: 0
+  _isDroppable: 1
   _removeWhenNumberIsZero: 0
   _isOnlyItem: 0
   _label: Golden Canteen

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 1
   _icon: {fileID: 21300000, guid: a61739a1872edd54b9ff97d26a685c34, type: 3}
-  _isDroppable: 0
+  _isDroppable: 1
   _removeWhenNumberIsZero: 0
   _isOnlyItem: 0
   _label: Book

@@ -5,17 +5,15 @@ using UnityEngine;
 
 public class MatrixUtility {
 
-    public string name;
-    private int maxRow;
-    private int maxCol;
-    private int[,] item;
-
-
+    public string Name{ get; set; }
+    int _maxRow;
+    int _maxCol;
+    int[,] _items;
     public MatrixUtility (int newMaxRow,int newMaxCol, string label) {
 
-        maxRow = newMaxRow;
-        maxCol = newMaxCol;
-        name = label;
+        _maxRow = newMaxRow;
+        _maxCol = newMaxCol;
+        Name = label;
         PopulateMatrix ();
         // SimulatePopulateMatrix();
 
@@ -33,9 +31,9 @@ public class MatrixUtility {
 
      //   PrintTitle ();
 
-        for (int row = 0 ; row < maxRow ; row++) {
+        for (int row = 0 ; row < _maxRow ; row++) {
 
-            for (int column = 0 ; column < maxCol ; column++) {
+            for (int column = 0 ; column < _maxCol ; column++) {
 
               //Debug.Log ("Row->  #" + row + " | Col->  #" + column + " Item: " + item[row,column]);
 
@@ -49,12 +47,12 @@ public class MatrixUtility {
     void SimulatePopulateMatrix () {
 
      //   PrintTitle ();
-        item = new int[maxRow,maxCol];
+        _items = new int[_maxRow,_maxCol];
         int i = 0;
 
-        for (int row = 0 ; row < maxRow ; row++) {
+        for (int row = 0 ; row < _maxRow ; row++) {
 
-            for (int column = 0 ; column < maxCol ; column++) {
+            for (int column = 0 ; column < _maxCol ; column++) {
 
                // item[row,column] = listId[Random.Range (0,listId.Count)];
 
@@ -72,14 +70,14 @@ public class MatrixUtility {
 
     public void PopulateMatrix () {
 
-        item = new int[maxRow,maxCol];
+        _items = new int[_maxRow,_maxCol];
         PrintTitle ();
 
-        for (int row = 0 ; row < maxRow ; row++) {
+        for (int row = 0 ; row < _maxRow ; row++) {
 
-            for (int column = 0 ; column < maxCol ; column++) {
+            for (int column = 0 ; column < _maxCol ; column++) {
 
-                item[row,column] = -1;
+                _items[row,column] = -1;
               //  Debug.Log ("Row->  #" + row + " | Col->  #" + column + " Item: " + item[row,column]);
                 
             }
@@ -101,7 +99,7 @@ public class MatrixUtility {
 
     public int[,] ShowFullList () {
 
-        return item;
+        return _items;
     }
 
     public void SetItem(List<Vector2> list, int id) {
@@ -114,7 +112,7 @@ public class MatrixUtility {
 
                 int row = (int) location.x;
                 int column = (int) location.y;
-                item[row,column] = id;
+                _items[row,column] = id;
 
               //  Debug.LogWarning ("Row->  #" + row + " | Col->  #" + column + " Item: " + id);
 
@@ -135,17 +133,17 @@ public class MatrixUtility {
 
         if (id >= 0) {
 
-            for (int row = 0 ; row < maxRow ; row++) {
+            for (int row = 0 ; row < _maxRow ; row++) {
 
-                for (int column = 0 ; column < maxCol ; column++) {
+                for (int column = 0 ; column < _maxCol ; column++) {
 
                     
-                    if (item[row,column] == id) {
+                    if (_items[row,column] == id) {
 
                         //Debug.LogWarning ("Before");
                         //Debug.Log ("Row->  #" + row + " | Col->  #" + column + " Item: " + item[row,column]);
 
-                        item[row,column] = -1;
+                        _items[row,column] = -1;
 
                         //Debug.LogWarning ("After");
                         //Debug.Log ("Row->  #" + row + " | Col->  #" + column + " Item: " + item[row,column]);
@@ -166,13 +164,13 @@ public class MatrixUtility {
 
         if(id >= 0) {
 
-            for (int row = 0 ; row < maxRow ; row++) {
+            for (int row = 0 ; row < _maxRow ; row++) {
 
-                for (int column = 0 ; column < maxCol ; column++) {
+                for (int column = 0 ; column < _maxCol ; column++) {
 
                     //int currentId = item[row,column];
 
-                    if (item[row,column] == id) {
+                    if (_items[row,column] == id) {
 
                       //Debug.Log ("Row->  #" + row + " | Col->  #" + column + " Item: " + item[row,column]);
                         listResult.Add (new Vector2 (row, column));
@@ -360,23 +358,23 @@ public class MatrixUtility {
         int colSelect = 0;
         
         //Looking for slot free on Horizontal
-        for (int row = 0 ; row < maxRow ; row++) {
+        for (int row = 0 ; row < _maxRow ; row++) {
 
-            for (int column = 0 ; column < maxCol ; column++) {
+            for (int column = 0 ; column < _maxCol ; column++) {
 
                 //Debug.Log ("FOR column: " + column);
 
-                if (item[row,column] == -1) {
+                if (_items[row,column] == -1) {
 
                     colSelect = column;
                     //Debug.Log ("------ First Free: -> Horizontal <-");
                     //Debug.Log ("Row: " + row + " Col: " + column + " | " + item[row,column]);
 
-                    if (maxCol - column >= numberHorizontal) {
+                    if (_maxCol - column >= numberHorizontal) {
 
                         //Debug.Log ("-> There is HOPE _H_");
 
-                        for (int i = colSelect ; i < maxCol ; i++) {
+                        for (int i = colSelect ; i < _maxCol ; i++) {
 
                             //Debug.Log ("Long Search");
 
@@ -386,9 +384,9 @@ public class MatrixUtility {
 
                                 for (int add = 0 ; add < deep ; add++) {
 
-                                    if (row + add < maxRow) {
+                                    if (row + add < _maxRow) {
 
-                                        if (item[row + add,i] == -1) {
+                                        if (_items[row + add,i] == -1) {
 
                                             listResult.Add (new Vector2(row + add,i));
                                             int w = row + add;
@@ -422,7 +420,7 @@ public class MatrixUtility {
                                     }
 
                                     //Max element                                
-                                      if (i == maxCol ) {                             
+                                      if (i == _maxCol ) {                             
                                         
                                       //Debug.Log ("Colum Limit");
                                         listResult.Clear ();
@@ -448,10 +446,10 @@ public class MatrixUtility {
 
                                 //Debug.Log ("-> STOPPED in Row: " + row + " Col: " + column + " | " + item[row,column]);
 
-                                if (maxCol - column <= numberHorizontal) {
+                                if (_maxCol - column <= numberHorizontal) {
 
                                     //Debug.Log ("## THERE IS NO HOPE");
-                                    column = maxCol;
+                                    column = _maxCol;
 
                                 }
 
@@ -481,24 +479,24 @@ public class MatrixUtility {
         int rowSelect = 0;
 
         //Looking for slot free on Vertical
-        for (int column = 0 ; column < maxCol ; column++) {
+        for (int column = 0 ; column < _maxCol ; column++) {
 
-            for (int row = 0 ; row < maxRow ; row++) {
+            for (int row = 0 ; row < _maxRow ; row++) {
 
 
-                if (item[row,column] == -1) {
+                if (_items[row,column] == -1) {
 
                     rowSelect = row;
 
                     //Debug.Log ("------ First Free --------->        Vertical");
                     //Debug.Log ("Row: " + row + " Col: " + column + " | " + item[row,column]);
 
-                    if (maxRow - row >= numberVertical) {
+                    if (_maxRow - row >= numberVertical) {
 
                         // Debug.Log ("## There is HOPE");
 
 
-                        for (int i = rowSelect ; i < maxRow ; i++) {
+                        for (int i = rowSelect ; i < _maxRow ; i++) {
 
                             //   Debug.Log ("Long Search");
 
@@ -506,9 +504,9 @@ public class MatrixUtility {
 
                                 for (int add = 0 ; add < deep ; add++) {
 
-                                    if (column + add < maxCol) {
+                                    if (column + add < _maxCol) {
 
-                                        if (item[i,column + add] == -1) {
+                                        if (_items[i,column + add] == -1) {
 
                                             listResult.Add (new Vector2 (i,column + add));
 
@@ -547,7 +545,7 @@ public class MatrixUtility {
                                 //It was this way=>
                                 //if (i == maxRow - 1) {
 
-                                    if (i == maxRow )  {
+                                    if (i == _maxRow )  {
 
                                     // Debug.Log ("Colum Limit");
                                     listResult.Clear ();
@@ -564,10 +562,10 @@ public class MatrixUtility {
                                 row = i;
                                 //Debug.Log ("-> STOPPED in Column: " + row + " Col: " + column + " | " + item[row,column]);
 
-                                if (maxRow - row <= numberVertical) {
+                                if (_maxRow - row <= numberVertical) {
 
                                     //Debug.Log ("## THERE IS NO HOPE");
-                                    row = maxRow;
+                                    row = _maxRow;
 
                                 }
 
@@ -605,7 +603,7 @@ public class MatrixUtility {
 
         //its was my last added 
         
-        if (deepVertical + currentRow > maxRow) {
+        if (deepVertical + currentRow > _maxRow) {
             
             return false;
         }
@@ -617,7 +615,7 @@ public class MatrixUtility {
         for (int row = currentRow ; row < limit ; row++) {
                       
 
-            result = result && (item[row,currentColumn] == -1);
+            result = result && (_items[row,currentColumn] == -1);
          
 
 
@@ -636,7 +634,7 @@ public class MatrixUtility {
         }
 
         //its was my last added 
-        if (deepHorizontal + currentColumn > maxCol) {
+        if (deepHorizontal + currentColumn > _maxCol) {
 
             return false;
         }
@@ -647,7 +645,7 @@ public class MatrixUtility {
 
         for (int column = currentColumn ; column < limit ; column++) {
 
-            result = result && (item[currentRow,column] == -1);
+            result = result && (_items[currentRow,column] == -1);
      
 
         }

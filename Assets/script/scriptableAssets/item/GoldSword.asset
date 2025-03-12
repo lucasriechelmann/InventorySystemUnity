@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 8
   _icon: {fileID: 21300000, guid: 13fdbf2e954b64c44bd20cf8e3ab2ce9, type: 3}
-  _isDroppable: 0
+  _isDroppable: 1
   _removeWhenNumberIsZero: 0
   _isOnlyItem: 0
   _label: Golden Sword
