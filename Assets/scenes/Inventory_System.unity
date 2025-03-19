@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 149540109}
   - component: {fileID: 149540108}
   - component: {fileID: 149540107}
+  - component: {fileID: 149540111}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -452,6 +453,42 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &149540111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149540106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da93ac292b627a4982c9c0b02781f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inventoryGO: {fileID: 1193855755}
+  _slotGroup: {fileID: 921571133}
+  _slotGO: {fileID: 8863054428064798307, guid: 169b017b16a13d24dbb798d504c35619, type: 3}
+  _complexSlotGroup: {fileID: 380350183}
+  _complexSlotGo: {fileID: 2784845653945194878, guid: 05789187b0e6534469b2155b1fe9d9d5,
+    type: 3}
+  _bagIcon: {fileID: 2026433015}
+  _bagTitle: {fileID: 628564240}
+  _bagWeight: {fileID: 1264095058}
+  _bagSlot: {fileID: 496297983}
+  _itemIconTitlePanel: {fileID: 18810647}
+  _itemCurrentNumber: {fileID: 1125286911}
+  _itemMaxNumber: {fileID: 1153814047}
+  _itemCurrentWeight: {fileID: 1264095058}
+  _itemMaxWeight: {fileID: 338916552}
+  _itemText: {fileID: 584968700}
+  _typeText: {fileID: 2057235317}
+  _descriptionText: {fileID: 1159903366}
+  _itemIconDetailPanel: {fileID: 18810647}
+  _currentNumberText: {fileID: 1125286911}
+  _maxNumberText: {fileID: 1153814047}
+  _totalWeightPerItemNumberText: {fileID: 338916552}
+  _simpleSlotList: []
+  _gridController: {fileID: 921571137}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
