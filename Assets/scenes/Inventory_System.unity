@@ -361,6 +361,7 @@ GameObject:
   - component: {fileID: 149540108}
   - component: {fileID: 149540107}
   - component: {fileID: 149540111}
+  - component: {fileID: 149540112}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -466,6 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventoryGO: {fileID: 1193855755}
+  _clothingWeaponGo: {fileID: 1705015177}
   _slotGroup: {fileID: 921571133}
   _slotGO: {fileID: 8863054428064798307, guid: 169b017b16a13d24dbb798d504c35619, type: 3}
   _complexSlotGroup: {fileID: 380350183}
@@ -489,6 +491,22 @@ MonoBehaviour:
   _totalWeightPerItemNumberText: {fileID: 338916552}
   _simpleSlotList: []
   _gridController: {fileID: 921571137}
+--- !u!114 &149540112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149540106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6cfef57c59fed478a7cba5cb26f630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shortCutGo: {fileID: 608437709}
+  _slotSpecialGroup: {fileID: 1265544069}
+  _specialSlotGo: {fileID: 3295991565925433273, guid: 69d8a168861f94e4bbe2d9dd3dcb064e,
+    type: 3}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -4519,7 +4537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1193855756
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5576,7 +5594,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1705015178
 RectTransform:
   m_ObjectHideFlags: 0

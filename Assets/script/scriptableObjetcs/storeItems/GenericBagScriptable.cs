@@ -36,7 +36,7 @@ public abstract class GenericBagScriptable : ScriptableObject
     public int CurrentSlot => _currentSlot;
     public float WeightLimit => _weightLimit;
     public float CurrentWeight => _currentWeight;
-    public bool AutoOrganize => _autoOrganize;
+    public bool AutoOrganize => _autoOrganize;   
     public bool UsedOrganizeBySizePriority
     {
         get => _usedOrganizeBySizePriority;

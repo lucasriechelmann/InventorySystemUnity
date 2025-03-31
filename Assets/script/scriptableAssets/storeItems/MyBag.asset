@@ -12,16 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef136c173593ba548ae83e30922bc09d, type: 3}
   m_Name: MyBag
   m_EditorClassIdentifier: 
-  _itemList:
-  - {fileID: 11400000, guid: 8faba7ff4dde6614c9668812aaf558d0, type: 2}
-  - {fileID: 11400000, guid: 4660b21cc09107b4eb93f1850fe06216, type: 2}
-  - {fileID: 11400000, guid: 7d90044382d39624396a3e66bbfdc714, type: 2}
-  - {fileID: 11400000, guid: 54ba6d0576e166a42881cd0830ed01e3, type: 2}
+  _itemList: []
   _icon: {fileID: 21300000, guid: 7ecc66f5366274940bb874860047294c, type: 3}
   _title: Main Bag
-  maxColumns: 4
-  maxRows: 4
-  _currentSlot: 8
-  _weightLimit: 10
-  _currentWeight: 1.1
+  maxColumns: 10
+  maxRows: 10
+  _currentSlot: 0
+  _weightLimit: 20
+  _currentWeight: 0
   _autoOrganize: 0

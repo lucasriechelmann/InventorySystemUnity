@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2427311268847071909}
   - component: {fileID: 8344881765694630521}
   - component: {fileID: 3615665328826811941}
+  - component: {fileID: 8063059262705233991}
   m_Layer: 5
   m_Name: SimpleSlot
   m_TagString: Untagged
@@ -86,5 +87,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1954d0c150714074db9294b4aac2c513, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slotPlaceTo: 0
+  _coordinate: {x: 0, y: 0}
+--- !u!114 &8063059262705233991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8863054428064798307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4ef25f988e91e408a025d977528e3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

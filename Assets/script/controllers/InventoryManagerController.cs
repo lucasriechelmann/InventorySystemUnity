@@ -23,6 +23,13 @@ public class InventoryManagerController : MonoBehaviour
     {
         Instance = this;
     }
+    void Start()
+    {
+        InventoryView.Instance.Initiate(_currentBag);
+
+        BagScriptable resultBag = CastGenericBagToBag();
+        ShortCutView.Instance.InitiateShortCutSlots(resultBag.MaxShortCutSlots);
+    }
     void Update()
     {
         UseShortCut();
@@ -30,6 +37,11 @@ public class InventoryManagerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             BuildMeshModel(Random.Range(1, 21), 1);
+        }
+
+        if(Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            ShowAndHide();
         }
     }
     void UseShortCut()
@@ -61,13 +73,13 @@ public class InventoryManagerController : MonoBehaviour
             if (result)
             {
                 List<GenericItemScriptable> resultItemList = _currentBag.ReturnFullList();
-                //Send the list => InventoryView
+                InventoryView.Instance.UpdateAllItems(resultItemList);
             }
 
             if (_currentBag.UsedOrganizeBySizePriority)
             {
                 List<GenericItemScriptable> resultItemList = _currentBag.ReturnFullList();
-                //Send the list => InventoryView
+                InventoryView.Instance.UpdateAllItems(resultItemList);
                 _currentBag.UsedOrganizeBySizePriority = false;
             }
 
@@ -123,5 +135,28 @@ public class InventoryManagerController : MonoBehaviour
         float zForce = Random.Range(75, 300);
         newInstance.GetComponentInChildren<Rigidbody>().AddRelativeForce(new Vector3(0, yForce, zForce));
     }
+    void ShowAndHide()
+    {
+        //Updates
+        InventoryView.Instance.ShowAndHide();
+    }
+    #endregion
+    #region OnDropItem and OnPointDown Methods
+    public bool OnDropItem(GenericItemScriptable itemDrop, GameObject origin, Vector2 coordinate, SlotPlaceTo slotPlaceTo)
+    {
+
+        return false;
+    }
+    public void OnPointerDownItem(GenericItemScriptable itemPointer, GameObject origin)
+    {
+        if(origin.transform.parent.parent.name == "InventoryPanel")
+        {
+            InventoryView.Instance.UpdateDescriptionAndDetailPanel(itemPointer);
+        }
+    }
+    #endregion
+    #region Helpers Methods
+    BagScriptable CastGenericBagToBag() =>
+        (_currentBag is BagScriptable bag) ? bag : ScriptableObject.CreateInstance<BagScriptable>();
     #endregion
 }

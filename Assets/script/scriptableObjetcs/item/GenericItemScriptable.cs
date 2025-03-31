@@ -5,7 +5,7 @@ public abstract class GenericItemScriptable : ScriptableObject
 {
     #region Properties
     [SerializeField]
-    int _id;
+    int _id;    
     [SerializeField]
     Sprite _icon;
     [SerializeField]
@@ -38,6 +38,7 @@ public abstract class GenericItemScriptable : ScriptableObject
     #endregion
     #region Getter and Setters
     public int Id => _id;
+    public abstract ItemType ItemType { get; }
     public Sprite Icon => _icon;
     public bool IsDroppable => _isDroppable;
     public bool RemoveWhenNumberIsZero => _removeWhenNumberIsZero;

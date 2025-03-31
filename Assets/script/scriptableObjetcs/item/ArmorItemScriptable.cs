@@ -7,6 +7,8 @@ public class ArmorItemScriptable : GenericItemScriptable
     [SerializeField]
     List<GenericActionScriptable> _actionEquipList;
 
+    public override ItemType ItemType => ItemType.ARMOR;
+
     public override void ActionEquipAndUnequipListDispatch()
     {
         _actionManagerEvent = new();        

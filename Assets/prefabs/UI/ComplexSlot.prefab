@@ -92,6 +92,8 @@ GameObject:
   - component: {fileID: 2784845653945194879}
   - component: {fileID: 767015705334269763}
   - component: {fileID: 5981334223861003693}
+  - component: {fileID: 849127985669576472}
+  - component: {fileID: 9065908701150124986}
   m_Layer: 5
   m_Name: ComplexSlot
   m_TagString: Untagged
@@ -185,6 +187,30 @@ MonoBehaviour:
   _itemView: {fileID: 0}
   _icon: {fileID: 2784845654524449903}
   _currentNumberText: {fileID: 2784845653861416505}
+--- !u!114 &849127985669576472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784845653945194878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61b993d01820db4a8d435a6a1ea96c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9065908701150124986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784845653945194878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 779fa3c56fcb0e44fb43405edcfd0239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2784845654524449901
 GameObject:
   m_ObjectHideFlags: 0

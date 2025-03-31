@@ -11,6 +11,13 @@ public enum SlotPlaceTo
     SHORT_CUT = 2,
     OUT = 3
 }
+public enum  ItemType
+{
+    CONSUMABLE = 0,
+    QUEST = 1,
+    WEAPON = 2,
+    ARMOR = 3
+}
 public enum ItemEquip
 {
     None = 0,

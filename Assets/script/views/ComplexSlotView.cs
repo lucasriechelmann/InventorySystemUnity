@@ -29,6 +29,7 @@ public class ComplexSlotView : MonoBehaviour
         _currentNumberText.text = _itemView.CurrentNumber.ToString();
         EnableAndDisableIcon(_itemView.CurrentNumber);
     }
+    public void UpdateIcon() => _icon.sprite = _itemView.Icon;
     void EnableAndDisableIcon(int value)
     {
         if(value > 0)
