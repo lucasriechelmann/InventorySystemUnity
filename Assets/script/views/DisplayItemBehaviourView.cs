@@ -8,11 +8,8 @@ public class DisplayItemBehaviourView : MonoBehaviour
     [SerializeField]
     GameObject _complexSlotGo;
     #endregion
-    #region MEthods
-    void OnEnable()
-    {
-        TurnOff();
-    }
+    #region Methods
+    void OnEnable() => TurnOff();
     public void TurnOn() => _complexSlotGo.SetActive(true);
     public void TurnOff() => _complexSlotGo.SetActive(false);
     #endregion

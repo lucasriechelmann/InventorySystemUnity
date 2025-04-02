@@ -13,7 +13,7 @@ public class DropZoneBehaviourView : MonoBehaviour, IDropHandler
 
         GameObject gameObjectResult = eventData.pointerDrag;
         GenericItemScriptable itemResult = gameObjectResult.GetComponent<ComplexSlotView>().ItemView;
-        SimpleSlotView simpleSlotView = gameObjectResult.GetComponent<SimpleSlotView>();
+        SimpleSlotView simpleSlotView = GetComponent<SimpleSlotView>();
         Vector2 coordinate = simpleSlotView.Coordinate;
         SlotPlaceTo slotPlaceTo = simpleSlotView.SlotPlaceTo;
 

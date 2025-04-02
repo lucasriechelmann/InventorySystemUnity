@@ -21,3 +21,4 @@ MonoBehaviour:
   _weightLimit: 20
   _currentWeight: 0
   _autoOrganize: 0
+  _maxShortCutSlots: 10

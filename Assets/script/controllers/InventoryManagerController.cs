@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using RandomUnity = UnityEngine.Random;
 
 public class InventoryManagerController : MonoBehaviour
 {
@@ -36,7 +38,7 @@ public class InventoryManagerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            BuildMeshModel(Random.Range(1, 21), 1);
+            BuildMeshModel(RandomUnity.Range(1, 21), 1);
         }
 
         if(Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Escape))
@@ -62,6 +64,11 @@ public class InventoryManagerController : MonoBehaviour
         {
             GenericItemScriptable item = _currentBag.FindItemById(id);
             //Refresh
+
+            if(item.CurrentNumber == 0 && item.RemoveWhenNumberIsZero)
+            {
+                DropItem(item);
+            }
         }
     }
     public bool AddItemToCurrentBag(GenericItemScriptable item, int number, bool exceptionCase)
@@ -131,8 +138,8 @@ public class InventoryManagerController : MonoBehaviour
         newInstance.GetComponent<ItemView>().Number = currentNumber;
         newInstance.transform.SetParent(_placeToDrop.transform, true);
 
-        float yForce = Random.Range(50, 250);
-        float zForce = Random.Range(75, 300);
+        float yForce = RandomUnity.Range(50, 250);
+        float zForce = RandomUnity.Range(75, 300);
         newInstance.GetComponentInChildren<Rigidbody>().AddRelativeForce(new Vector3(0, yForce, zForce));
     }
     void ShowAndHide()
@@ -141,9 +148,88 @@ public class InventoryManagerController : MonoBehaviour
         InventoryView.Instance.ShowAndHide();
     }
     #endregion
+    #region Short Cut Methods
+    bool AddItemToCurrentShortCut(int index, GenericItemScriptable item)
+    {
+        BagScriptable resultBag = CastGenericBagToBag();
+
+        if (resultBag.Equals(null))
+            return false;
+
+        bool result = resultBag.AddItemToShortCut(index, item);
+
+        if (result)
+        {
+            RefreshShortCutViewByItem(item);
+        }
+
+        return result;
+    }
+    public bool ChangeShortCutPosition(GenericItemScriptable itemChanged, int index)
+    {
+
+        BagScriptable resultBag = CastGenericBagToBag();
+
+        if(!resultBag.Equals(null))
+        {
+            bool result = resultBag.ChangeItemPosition(itemChanged, index);
+
+            if(result)
+            {
+                return true;
+            }
+            
+        }
+
+        return false;
+    }
+    public bool RemoveItemFromShortCut(int id)
+    {
+        BagScriptable resultBag = CastGenericBagToBag();
+
+        if (!resultBag.Equals(null))
+        {
+            bool result = resultBag.RemoveItemFromShortCutById(id);
+
+            if (result)
+            {
+
+                return true;
+            }            
+        }
+
+        return false;
+    }
+    void RefreshShortCutViewByItem(GenericItemScriptable itemUpdate)
+    {
+        BagScriptable resultBag = CastGenericBagToBag();
+        List<int> idsResult = resultBag.GetIdsFromItemShortCutDictionary();
+
+        foreach (int id in idsResult)
+        {
+            if (id == itemUpdate.Id)
+            {
+                Dictionary<int, GenericItemScriptable> resultDictionary = resultBag.ItemsShortCutDictionary;
+                List<int> keyResults = resultBag.GetUsedKeysFromShortCutDictionary();
+                ShortCutView.Instance.UpdateSlot(resultDictionary, keyResults);
+            }
+        }
+
+    }
+    #endregion
     #region OnDropItem and OnPointDown Methods
     public bool OnDropItem(GenericItemScriptable itemDrop, GameObject origin, Vector2 coordinate, SlotPlaceTo slotPlaceTo)
     {
+        int index = (int)coordinate.y;
+
+        if(origin.transform.parent.parent.name == "InventoryPanel" && slotPlaceTo != SlotPlaceTo.BAG)
+        {
+            switch (slotPlaceTo)
+            {
+                case SlotPlaceTo.SHORT_CUT:
+                    return AddItemToCurrentShortCut(index, itemDrop);
+            }
+        }
 
         return false;
     }
